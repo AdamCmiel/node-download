@@ -18,3 +18,5 @@ On the command line:
 Expected output:
 
     file downloaded from http://www.foo.com to ./bar.baz
+  
+Currently does not support https
