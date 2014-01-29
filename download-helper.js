@@ -4,10 +4,13 @@
 
 var fs = require('fs');
 var http = require('http');
+var https = require('https');
 
 // ------------------------- Define Export Module --------------------------- //
 
 module.exports = downloadFile = function(request_path, write_path, cb) {
+
+  var protocol = /^https/.test(request_path) ? https : http;
 
 // ------------------- Create a write stream to disk ------------------------ //
 
@@ -15,7 +18,7 @@ module.exports = downloadFile = function(request_path, write_path, cb) {
 
 // -------------------------- Make Request ---------------------------------- //
 
-  var request = http.get(request_path, function(response) {
+  var request = protocol.get(request_path, function(response) {
 
 // ----------------- Pipe the response to the local file -------------------- //
 
